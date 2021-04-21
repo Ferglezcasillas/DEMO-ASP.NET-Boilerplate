@@ -1,0 +1,103 @@
+﻿<div [@routerTransition]>
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h1>{{ "About" | localize }}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content px-2">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body">
+          <p>
+            Esta aplicación se ha realizado para realizar una primera acercación al Framework
+            conformado por ASP.NET Boilerplate. Ha sido programado por Fernando González Casillas (
+              <a href="https://www.linkedin.com/in/fernando-gonz%C3%A1lez-casillas/" target="_blank">
+                LinkedIn</a
+            >).
+          </p>
+          <h3>¿Qué se ha realizado en esta pequeña demo?</h3>
+          <p>
+            Tras haber instalado las herramientas necesarias, a raíz de la plantilla otorgada en
+            la página oficial de <a href="https://aspnetboilerplate.com/" target="_blank">
+              ASP.NET Boilerplate</a>, comencé a ojear la estructura proporcionada por defecto
+            para irme adecuando al proyecto. Las tecnologías con la que comenzaría a trabajar
+            eran nuevas (en términos prácticos) para mí, por lo que debía familiarizarme con ellas.
+          </p>
+          <p>
+            Por lo que, la finalidad de esta demo, siendo la de familiarizarse con el entorno mencionado
+            previamente, sería la de añadir una nueva pestaña funcional a la aplicación por defecto. Esta pestaña
+            tiene la función de conformar un registro de productos con sus correspondientes operaciones de adición,
+            edición, listado y borrado.
+          </p>
+          <h3>Con algo más de detalle...</h3>
+          <p>
+            Con un poco más de detalle lo realizado en esta demo es lo siguiente:
+          </p>
+          <ol>
+            <li>
+              <h5>Conexión con la base de datos</h5>
+              <p>
+                Creamos una base de datos y, mediante el "string" de conexión, le indicamos a nuestra aplicación
+                la base de datos con la que trabajará. Para ello, tras indicar lo anterior en el fichero 
+                <i>appsettings.json</i>, realizamos un <i>Update-Database</i> en la consola manejadora de paquetes
+                señalando el proyecto <i>EntityFrameworkCore</i>. Esto hará que se generen las migraciones/tablas 
+                necesarias en la base de datos para trabajar con la aplicación.
+              </p>
+            </li>
+            <li>
+              <h5>Instalación de dependencias necesarias de Angular</h5>
+              <p>
+                Desde la consola de Visual Studio Code y en la ruta de la parte <i>front</i> de nuestro proyecto (directorio angular)
+                ejecutamos el comando <i>npm install</i> para instalar las dependencias necesarias para trabajar. Tras
+                realizar un <i>ng serve</i> o <i>npm start</i> podremos lanzar la aplicación visual.
+              </p>
+            </li>
+            <li>
+              <h5>Adición de la operación deseada al <i>Back-End</i></h5>
+              <p>
+                Aquí ya empezamos a trabajar sobre la funcionalidad que deseamos añadir a la aplicación (que es la 
+                del registro de productos previamente mencionado). Para esto tendremos que seguir el siguiente proceso:
+              </p>
+              <ul>
+                <li>Adición de la entidad <strong>Producto</strong> con las propiedades deseadas.</li>
+                <li>Adición del denominado contexto de base de datos o <strong>DbContext</strong>.</li>
+                <li>Ejecución de comando <strong>Add-Migration "Add-Products"</strong> el cual nos preparará las migraciones necesarias.</li>
+                <li>Ejecución de comando <strong>Update-Database</strong> para que genere los cambios preparados en el punto anterior (generará la tabla <i>products</i>).</li>
+                <li>Adición de un <strong>ProductDto</strong> que nos permitirá la gestión de las operaciones CRUD de la entidad <i>Producto</i>.</li>
+                <li>Registro de un <strong>PermissionNames.Pages_Products</strong>para la página de gestión de la entidad <i>Producto</i>.</li>
+                <li>Adición de un <strong>ProductAppService</strong> para para exponer las operaciones de la entidad <i>Producto</i> en la API.</li>
+                <li>Ahora, si ejecutamos la aplicación, se nos abrirá <i>Swagger UI</i> en el navegador y podremos observar la API de nuestro 
+                  proyecto y observar que las operaciones de la entidad <i>Producto</i> se encuentran visibles.</li>
+                  <br>
+              </ul>
+            </li>
+            <li>
+              <h5>Adición de la nueva funcionalidad al <i>Front-end</i></h5>
+              <p>
+                Ya en Visual Studio Code, nos centramos en el <i>Front-end</i> y, para que las operaciones añadidas en el
+                Back-End tengan utilidad de cara al usuario, deberemos realizar los siguientes pasos:
+              </p>
+              <ul>
+                <li>Adición del componente <strong>products</strong>. Esto es una carpeta dedicada a las operaciones y vistas que tendrá este apartado.</li>
+                <li>Adición de la pestaña <i>Products</i> en el menú de la aplicación indicando la página (<i>Page</i>) correspondiente a <i>Products</i>.</li>
+                <li>Le damos autorización al <i>Host</i> (en el <i>AuthorizationProvider</i> de la aplicación) de la vista.</li>
+                <li>Realizamos el denominado <i>routing</i> para indicar el componente a mostrar cuando se seleccione la pestaña relativa a los productos.</li>
+                <li>En la ruta <i>angular\nswag</i> ejecutamos el archivo por lotes <i>refresh.bat</i> para realizar un actualizado de los denominados <i>ServicesProxies</i>.</li>
+                <li>Actualizamos el <i>app-modules.ts</i> y el <i>service-proxie.module.ts</i> mediante el registro de los nuevos componentes.</li>
+                <li>Para gestionar las traducciones, volviendo al Back-End, cambiamos los ficheros <i>xml</i> de <i>Localization</i>.</li>
+                <li>¡Ya podemos arrancar la aplicación con nuestra nueva funcionalidad!</li>
+                
+                  <br>
+              </ul>
+            </li>
+          </ol>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
